@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Individual Form</title>
+  <link rel="icon" href="IMG/clipart708931.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resetv2.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="message-container" id="message"
+  style="
+    display: none;
+    font-weight: bold;
+    color: green;
+    padding: 8px;
+    background-color: beige;
+    border-radius: 4px;
+    border-color: aquamarine;
+  "></div>
+
+  <main>
+    <div class="form-header">
+        <h2>College Student Information Form</h2>
+    </div>
+
+    <form id="form" method="POST" onsubmit="return validateEmail()">
+      <div class="student-information-container">
+        <h2>Student Information</h2>
+        <div class="student-year-row">
+          <label for="YearLevel" class="input-label">Year Level</label>
+          
+          <div class="student-year" title="Select your year level">
+            <input type="radio" id="year-level" name="YearLevel" value="First Year" title="Select your year level" required >  
+              <p>First Year</p>
+            <input type="radio" id="year-level" name="YearLevel" value="Second Year" title="Select your year level" required>
+              <p>Second Year</p>
+            <input type="radio" id="year-level" name="YearLevel" value="Third Year" title="Select your year level" required>  
+              <p>Third Year</p>
+            <input type="radio" id="year-level" name="YearLevel" value="Fourth Year" title="Select your year level" required>  
+              <p>Fourth Year</p>
+            <input type="radio" id="year-level" name="YearLevel" value="Other" title="Select your year level" required>  
+              <p>Other</p>
+          </div>
+        </div>
+
+        <div class="student-first-row">
+            <label for="first-name" class="input-label">First Name</label>
+            <label for="middle-name" class="input-label">Middle Name</label>
+            <label for="last-name" class="input-label">Last Name</label>
+
+            <input class="input" type="text" id="first-name" name="FirstName" title="First Name" required>
+            <input class="input" type="text" id="middle-name" name="MiddleName" title="Middle Name" required>
+            <input class="input" type="text" id="last-name" name="LastName" title="Last Name" required>
+        </div>
+
+        <div class="student-second-row">
+          <label for="student-number" class="input-label">Student Id</label>
+          <label for="gender" class="input-label" >Gender</label>
+          <label for="date-of-birth" class="input-label">Date of Birth</label>
+          
+          
+          <input class="input" type="text" id="student-number" name="StudentID" pattern="[0-9]{4}-[0-9]{5}-MN-[0-9]{1}" placeholder="xxxx-xxxx-MN-x" title="Input valid Student ID" required>
+          <div class="gender">
+            <input type="radio" id="gender" name="Gender" value="Male" title="Select your gender" required>  
+            <p>Male</p>
+            <input type="radio" id="gender" name="Gender" value="Female" title="Select your gender" required>
+            <p>Female</p>
+          </div>
+          <input type="date" class="input" id="date-of-birth" name="Birthdate" title="Birthdate must start from 2010-12-31 or earlier" max="2010-12-31" required>
+        </div>
+
+        <section class="hobby-container">
+          <label for="" class="input-label">Hobby</label>
+          <div class="first-hobby-cont">
+            <input type="checkbox" id="first-hobby" name="Hobbies" value="singing" title="Select your hobbies"/>
+            <label for="first-hobby">Singing</label>
+          </div>
+  
+          <div class="second-hobby-cont">
+            <input type="checkbox" id="second-hobby" name="Hobbies" value="dancing" title="Select your hobbies"/>
+            <label for="second-hobby">Dancing</label>
+          </div>
+  
+          <div class="third-hobby-cont">
+            <input type="checkbox" id="third-hobby" name="Hobbies" value="painting" title="Select your hobbies"/>
+            <label for="third-hobby">Painting</label>
+          </div>
+  
+          <div class="fourth-hobby-cont">
+            <input type="checkbox" id="fourth-hobby" name="Hobbies" value="reading" title="Select your hobbies"/>
+            <label for="fourth-hobby">Reading</label>
+          </div>
+  
+          <div class="fifth-hobby-cont">
+            <input type="checkbox" id="fifth-hobby" name="Hobbies" value="other" title="Select your hobbies"/>
+            <label for="other">Other</label>
+          </div>
+        </section>
+
+
+        <div class="student-third-row">
+          <label for="college" class="input-label">College</label>
+          
+         
+          <select id="college" name="College" required onchange="validateSelect(this)">
+            <option value="" disabled selected>Select an option</option>
+            <option value="CAF">CAF - College of Accountancy and Finance</option>
+            <option value="CADBE">CADBE - College of Architecture, Design and the Built Environment</option>
+            <option value="CAL">CAL - College of Arts and Letters</option>
+            <option value="CBA">CBA - College of Business Administration</option>
+            <option value="COC">COC - College of Communication</option>
+            <option value="CCIS">CCIS - College of Computer and Information Sciences</option>
+            <option value="COED">COED - College of Education</option>
+            <option value="CE">CE - College of Engineering</option>
+            <option value="CHK">CHK - College of Human Kinetics</option>
+            <option value="CL">CL - College of Law</option>
+            <option value="CPSPA">CPSPA - College of Political Science and Public Adminitrator</option>
+            <option value="CS">CS - College of Science</option>
+            <option value="CTHTM">CTHTM - College of Tourism, Hospitality and Transportation Management</option>
+          </select>
+        </div>
+
+        <div class="student-fourth-row">
+
+          <label for="course-section" class="input-label">Course, Yr. & Section</label>
+          <label for="phone-number" class="input-label">Phone/Mobile no.</label>
+          <label for="email" class="input-label">Email address</label>
+
+          <input type="text" id="course-section" name="CourseandSection" title="Enter your section" required>
+          <input type="tel" id="phone-number" name="PhoneNo" pattern="09[0-9]{2}-[0-9]{3}-[0-9]{4}" title="Follow the given format" placeholder="09xx-xxx-xxxx" required>
+          <input type="email" id="email" name="EmailAddress" pattern="[a-zA-Z0-9._%+-]+@gmail\.com$" required title="Please enter a valid email address" placeholder="example@gmail.com">
+        </div>
+    
+        <div class="student-fifth-row">
+          <label for="address" class="input-label">Address</label>
+          <input type="text" id="address" name="Address" maxlength="85" title="Address should not exceed 85 characters" required>
+        </div>
+        <div class="student-sixth-row">
+          <input type="submit"  id="submit-button">
+        </div>
+      </form>
+   </main>
+  <script>
+
+    document.getElementById("form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+    document.getElementById("message").textContent = "Submitting..";
+    document.getElementById("message").style.display = "block";
+    document.getElementById("submit-button").disabled = true;
+
+    // Collect the form data
+    var formData = new FormData(this);
+
+    // Process checkbox values
+    var studentTypeValues = [];
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name="Hobbies"]:checked');
+    checkboxes.forEach(function(checkbox) {
+      studentTypeValues.push(checkbox.value);
+    });
+
+    // Add checkbox values to formData
+    formData.append('Hobbies', studentTypeValues.join(', '));
+
+    // Send a POST request to your Google Apps Script
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyMqhxpGXEPgCkvzFuf_SqJigWe4iNzMYH_Oc-_kIMxmLGvJZP2aoS0t2UOyEPJVuo0zw/exec",
+      {
+        redirect: "follow",
+        method: "POST",
+        body: new URLSearchParams(formData).toString(),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    )
+    .then(function (response) {
+      // Check if the request was successful
+      if (response) {
+        return response; // Assuming your script returns JSON response
+      } else {
+        throw new Error("Failed to submit the form.");
+      }
+    })
+    .then(function (data) {
+      // Display a success message
+      document.getElementById("message").textContent =
+        "Data submitted successfully!";
+      document.getElementById("message").style.display = "block";
+      document.getElementById("message").style.backgroundColor = "green";
+      document.getElementById("message").style.color = "beige";
+      document.getElementById("submit-button").disabled = false;
+      document.getElementById("form").reset();
+
+      setTimeout(function () {
+        document.getElementById("message").textContent = "";
+        document.getElementById("message").style.display = "none";
+      }, 2600);
+    })
+    .catch(function (error) {
+      // Handle errors, you can display an error message here
+      console.error(error);
+      document.getElementById("message").textContent =
+        "An error occurred while submitting the form.";
+      document.getElementById("message").style.display = "block";
+    });
+  });
+  </script>
+</body>
+</html>
